@@ -1,3 +1,5 @@
+[![.NET](https://github.com/aimenux/QuickBenchsDemo/actions/workflows/ci.yml/badge.svg)](https://github.com/aimenux/QuickBenchsDemo/actions/workflows/ci.yml)
+
 # QuickBenchsDemo
 ```
 Quick benchmarks for various things encountered in my dev journey
