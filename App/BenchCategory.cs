@@ -2,6 +2,5 @@
 
 public enum BenchCategory
 {
-    Small,
-    Large
+    Default
 }

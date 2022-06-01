@@ -3,7 +3,7 @@
 namespace App;
 
 [Config(typeof(BenchConfig))]
-[BenchmarkCategory(nameof(BenchCategory.Large))]
+[BenchmarkCategory(nameof(BenchCategory.Default))]
 public class LinqWhereClauseBench
 {
     private List<int> _items;
