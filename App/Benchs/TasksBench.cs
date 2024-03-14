@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
+using App.Shared;
 using BenchmarkDotNet.Attributes;
 
-namespace App;
+namespace App.Benchs;
 
 [Config(typeof(LatestBenchConfig))]
 [BenchmarkCategory(nameof(BenchCategory.Default))]

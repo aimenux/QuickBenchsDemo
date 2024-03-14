@@ -1,4 +1,4 @@
-﻿namespace App;
+﻿namespace App.Shared;
 
 public static class Randomize
 {
@@ -9,11 +9,6 @@ public static class Randomize
         const string chars = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         return new string(Enumerable.Repeat(chars, length)
             .Select(s => s[Random.Shared.Next(s.Length)]).ToArray());
-    }
-        
-    public static string RandomString(int length, char character)
-    {
-        return new string(Enumerable.Repeat(character, length).ToArray());
     }
 
     public static int RandomNumber(int min, int max)

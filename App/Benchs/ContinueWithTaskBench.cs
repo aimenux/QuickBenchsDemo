@@ -1,7 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿using App.Shared;
+using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace App;
+namespace App.Benchs;
 
 [Config(typeof(BenchConfig))]
 [BenchmarkCategory(nameof(BenchCategory.Default))]

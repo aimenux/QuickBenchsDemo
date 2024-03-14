@@ -15,4 +15,4 @@ In order to run benchmarks, type this command in your favorite terminal :
 > :writing_hand: `.\App.exe --filter *CancellationTokenBench*`
 
 >
-**`Tools`** : vs22, net 6.0, net 7.0, benchmark-dotnet
+**`Tools`** : net 6.0, net 7.0, net 8.0, benchmark-dotnet

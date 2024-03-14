@@ -1,8 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using App.Shared;
+using System.Text.RegularExpressions;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 
-namespace App;
+namespace App.Benchs;
 
 #if NET7_0_OR_GREATER
 

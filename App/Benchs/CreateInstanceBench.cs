@@ -1,7 +1,8 @@
 ﻿using System.Linq.Expressions;
+using App.Shared;
 using BenchmarkDotNet.Attributes;
 
-namespace App;
+namespace App.Benchs;
 
 [Config(typeof(BenchConfig))]
 [BenchmarkCategory(nameof(BenchCategory.Default))]

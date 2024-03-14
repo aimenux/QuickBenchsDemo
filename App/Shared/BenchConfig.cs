@@ -9,11 +9,11 @@ using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Reports;
 
-namespace App;
+namespace App.Shared;
 
-public class LatestBenchConfig : ManualConfig
+public class BenchConfig : ManualConfig
 {
-    public LatestBenchConfig()
+    public BenchConfig()
     {
         HideColumns(Column.RatioSD);
         AddColumn(RankColumn.Arabic);
@@ -32,6 +32,8 @@ public class LatestBenchConfig : ManualConfig
         AddLogicalGroupRules(BenchmarkLogicalGroupRule.ByParams);
         WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
         WithSummaryStyle(SummaryStyle.Default.WithRatioStyle(RatioStyle.Trend));
+        AddJob(Job.Default.WithRuntime(CoreRuntime.Core60).WithId(nameof(RuntimeMoniker.Net60)));
+        AddJob(Job.Default.WithRuntime(CoreRuntime.Core70).WithId(nameof(RuntimeMoniker.Net70)));
         AddJob(Job.Default.WithRuntime(CoreRuntime.Core80).WithId(nameof(RuntimeMoniker.Net80)));
     }
 }

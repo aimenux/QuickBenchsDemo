@@ -1,7 +1,7 @@
-﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
+﻿using App.Shared;
+using BenchmarkDotNet.Attributes;
 
-namespace App;
+namespace App.Benchs;
 
 [Config(typeof(BenchConfig))]
 [BenchmarkCategory(nameof(BenchCategory.Default))]

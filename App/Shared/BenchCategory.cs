@@ -1,4 +1,4 @@
-﻿namespace App;
+﻿namespace App.Shared;
 
 public enum BenchCategory
 {
