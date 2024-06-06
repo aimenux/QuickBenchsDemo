@@ -18,7 +18,7 @@ public class CountWordBench
     public void Setup()
     {
         var items = Enumerable
-            .Range(0, Size)
+            .Range(1, Size)
             .Select(_ => Randomize.RandomString(10))
             .OrderBy(_ => Guid.NewGuid())
             .ToList();

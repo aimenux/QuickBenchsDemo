@@ -10,9 +10,9 @@ In this demo, i m using [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDot
 
 In order to run benchmarks, type this command in your favorite terminal :
 >
-> :writing_hand: `.\App.exe --filter *IntegerToEnumBench*`
+> :writing_hand: `dotnet run --project .\App\ -c release -f net6.0 --filter *IntegerToEnumBench*`
 >
-> :writing_hand: `.\App.exe --filter *CancellationTokenBench*`
+> :writing_hand: `dotnet run --project .\App\ -c release -f net8.0 --filter *IntegerToEnumBench*`
 
 >
 **`Tools`** : net 6.0, net 7.0, net 8.0, benchmark-dotnet

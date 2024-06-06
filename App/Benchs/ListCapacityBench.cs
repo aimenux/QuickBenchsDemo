@@ -18,7 +18,7 @@ public class ListCapacityBench
     {
         var fixture = new Fixture();
         _companies = Enumerable
-            .Range(0, Size)
+            .Range(1, Size)
             .Select(_ => fixture.Create<Company>())
             .ToArray();
     }

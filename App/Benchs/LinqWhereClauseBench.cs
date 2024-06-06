@@ -17,7 +17,7 @@ public class LinqWhereClauseBench
     {
         var random = new Random(Guid.NewGuid().GetHashCode());
         _items = Enumerable
-            .Range(0, Size)
+            .Range(1, Size)
             .Select(_ => random.Next(0, int.MaxValue))
             .OrderBy(_ => Guid.NewGuid())
             .ToList();
