@@ -1,10 +1,8 @@
 ﻿using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
-using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Exporters.Csv;
-using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Reports;
@@ -28,12 +26,10 @@ public class BenchConfig : ManualConfig
         AddExporter(MarkdownExporter.GitHub);
         AddExporter(MarkdownExporter.Default);
         AddDiagnoser(MemoryDiagnoser.Default);
+        AddDiagnoser(ThreadingDiagnoser.Default);
         AddDiagnoser(ExceptionDiagnoser.Default);
         AddLogicalGroupRules(BenchmarkLogicalGroupRule.ByParams);
         WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
         WithSummaryStyle(SummaryStyle.Default.WithRatioStyle(RatioStyle.Trend));
-        AddJob(Job.Default.WithRuntime(CoreRuntime.Core80).WithId(nameof(RuntimeMoniker.Net80)));
-        AddJob(Job.Default.WithRuntime(CoreRuntime.Core90).WithId(nameof(RuntimeMoniker.Net90)));
-        AddJob(Job.Default.WithRuntime(CoreRuntime.Core10_0).WithId(nameof(RuntimeMoniker.Net10_0)));
     }
 }

@@ -4,7 +4,7 @@ using BenchmarkDotNet.Attributes;
 
 namespace App.Benchs;
 
-[Config(typeof(LatestBenchConfig))]
+[Config(typeof(BenchConfig))]
 [BenchmarkCategory(nameof(BenchCategory.Default))]
 public class TasksBench
 {
