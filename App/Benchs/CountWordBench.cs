@@ -28,10 +28,8 @@ public class CountWordBench
         File.WriteAllLines(_file, items);
     }
 
-#if NET7_0_OR_GREATER
     [Benchmark]
     public int CountWordV1() => Regex.Count(File.ReadAllText(_file), $@"\b{_word}\b", RegexOptions.IgnoreCase);
-#endif
     
     [Benchmark]
     public int CountWordV2() => Regex.Matches(File.ReadAllText(_file), $@"\b{_word}\b", RegexOptions.IgnoreCase).Count;

@@ -1,14 +1,10 @@
 ﻿using App.Shared;
 using System.Text.RegularExpressions;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
 
 namespace App.Benchs;
 
-#if NET7_0_OR_GREATER
-
 [Config(typeof(BenchConfig))]
-[SimpleJob(RuntimeMoniker.Net70)]
 [BenchmarkCategory(nameof(BenchCategory.Default))]
 public class GeneratedRegexBench
 {
@@ -43,9 +39,7 @@ public static partial class DigitsRegexStyles
     [GeneratedRegex(RegexPattern, RegexOptions.Compiled)]
     private static partial Regex DigitsGeneratedRegex();
     
-    public static readonly Regex OldStyleRegex = new Regex(RegexPattern, RegexOptions.Compiled);
+    public static readonly Regex OldStyleRegex = new(RegexPattern, RegexOptions.Compiled);
     
     public static readonly Regex NewStyleRegex = DigitsGeneratedRegex();
 }
-
-#endif

@@ -32,8 +32,8 @@ public class BenchConfig : ManualConfig
         AddLogicalGroupRules(BenchmarkLogicalGroupRule.ByParams);
         WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
         WithSummaryStyle(SummaryStyle.Default.WithRatioStyle(RatioStyle.Trend));
-        AddJob(Job.Default.WithRuntime(CoreRuntime.Core60).WithId(nameof(RuntimeMoniker.Net60)));
-        AddJob(Job.Default.WithRuntime(CoreRuntime.Core70).WithId(nameof(RuntimeMoniker.Net70)));
         AddJob(Job.Default.WithRuntime(CoreRuntime.Core80).WithId(nameof(RuntimeMoniker.Net80)));
+        AddJob(Job.Default.WithRuntime(CoreRuntime.Core90).WithId(nameof(RuntimeMoniker.Net90)));
+        AddJob(Job.Default.WithRuntime(CoreRuntime.Core10_0).WithId(nameof(RuntimeMoniker.Net10_0)));
     }
 }
