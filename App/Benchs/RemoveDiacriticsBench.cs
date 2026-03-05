@@ -1,7 +1,9 @@
 ﻿using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using App.Shared;
 using BenchmarkDotNet.Attributes;
+using static App.Benchs.RemoveDiacriticsConstants;
 
 namespace App.Benchs;
 
@@ -23,24 +25,19 @@ public class RemoveDiacriticsBench
     [Benchmark(Baseline = true)]
     public string WithLinq()
     {
-        var chars = _input
-            .Normalize(NormalizationForm.FormD)
-            .Where(c => !IsDiacriticalMark(c))
-            .ToArray();
-
-        return new string(chars);
+        var normalized = _input.Normalize(NormalizationForm.FormD);
+        
+        return new string(normalized.Where(c => !IsDiacriticalMark(c)).ToArray());
     }
     
     [Benchmark]
     public string WithStringBuilder()
     {
-        var sb = new StringBuilder(_input.Length);
+        var normalized = _input.Normalize(NormalizationForm.FormD);
+        
+        var sb = new StringBuilder(normalized.Length);
 
-        var chars = _input
-            .Normalize(NormalizationForm.FormD)
-            .Where(c => !IsDiacriticalMark(c));
-
-        foreach(var c in chars)
+        foreach (var c in normalized.Where(c => !IsDiacriticalMark(c)))
         {
             sb.Append(c);
         }
@@ -48,8 +45,26 @@ public class RemoveDiacriticsBench
         return sb.ToString();
     }
     
+    [Benchmark]
+    public string WithRegex()
+    {
+        var normalized = _input.Normalize(NormalizationForm.FormD);
+        
+        return DiacriticalMarksRegex().Replace(normalized, string.Empty);
+    }
+    
     private static bool IsDiacriticalMark(char c)
     {
         return CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.NonSpacingMark;
     }
+}
+
+public static partial class RemoveDiacriticsConstants
+{
+    private const int MaxTimeInMilliseconds = 1000;
+
+    private const RegexOptions Options = RegexOptions.Compiled;
+
+    [GeneratedRegex(@"[\u0300-\u036F]", Options, MaxTimeInMilliseconds)]
+    public static partial Regex DiacriticalMarksRegex();
 }
